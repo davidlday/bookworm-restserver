@@ -16,26 +16,28 @@ public class BookwormRestServer {
           return request.body();
         });
 
-        post("/params", (req, res) -> {
+        post("/params", (request, response) -> {
           return req.params();
         });
 
-        post("/queryParams", (req, res) -> {
+        post("/queryParams", (request, response) -> {
           return req.queryParams();
         });
 
-//         post("/cat", (req, res) -> {
+//         post("/cat", (request, response) -> {
 //           MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp");
 //           request.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
 //           return req.params("text");
 //         });
 
-        post("/analysis", (req, res) -> {
+        post("/analysis", (request, response) -> {
           Prose prose = new Prose(req.queryParams("prose"));
           ReadabilityScores scores = new ReadabilityScores(prose);
+          response.status(200);
+          response.type("application/json");
           return prose.toString();
         });
 
-        post("/extraction", (req, res) -> "Extracted!");
+        post("/extraction", (request, response) -> "Extracted!");
     }
 }
