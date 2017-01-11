@@ -3,8 +3,10 @@ package com.prosegrinder.bookworm.restservice.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prosegrinder.bookworm.util.Prose;
 import com.prosegrinder.bookworm.util.ReadabilityScores;
+import io.dropwizard.jackson.JsonSnakeCase;
 import org.hibernate.validator.constraints.Length;
 
+@JsonSnakeCase
 public class Analysis {
 
   private Prose prose;
@@ -19,12 +21,12 @@ public class Analysis {
     scores = new ReadabilityScores(prose);
   }
 
-  @JsonProperty("word_count")
+  @JsonProperty
   public Integer getWordCount() {
     return prose.getWordCount();
   }
 
-  @JsonProperty("syllable_count")
+  @JsonProperty
   public Integer getSyllableCount() {
     return prose.getSyllableCount();
   }
