@@ -18,10 +18,6 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class AnalysisResource {
 
-  public AnalysisResource() {
-
-  }
-
   @POST
   @Timed
   public Analysis getAnalysis(@NotNull ProsePayload prosePayload) {
