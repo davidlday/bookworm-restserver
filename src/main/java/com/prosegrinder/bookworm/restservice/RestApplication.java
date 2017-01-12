@@ -21,7 +21,7 @@ public class RestApplication extends Application<RestConfiguration> {
   public void initialize(final Bootstrap<RestConfiguration> bootstrap) {
     // TODO: application initialization
     // Ensure the SyllableDictionary singleton is instantiated.
-    SyllableDictionary sd = SyllableDictionary.getInstance();
+    SyllableDictionary.getInstance();
   }
 
   @Override

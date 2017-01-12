@@ -3,15 +3,15 @@ package com.prosegrinder.bookworm.restservice.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 // import com.prosegrinder.bookworm.restservice.api.WordFrequency;
 import com.prosegrinder.bookworm.util.Prose;
-import com.prosegrinder.bookworm.util.Word;
+// import com.prosegrinder.bookworm.util.Word;
 import com.prosegrinder.bookworm.util.ReadabilityScores;
 import io.dropwizard.jackson.JsonSnakeCase;
-import org.hibernate.validator.constraints.Length;
+// import org.hibernate.validator.constraints.Length;
 
-import java.util.ArrayList;
-import java.util.Collections;
+// import java.util.ArrayList;
+// import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+// import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,8 +29,6 @@ public class Analysis {
     prose = new Prose(text);
     scores = new ReadabilityScores(prose);
   }
-
-
 
   @JsonProperty
   public Double getAvgSyllablesPerWord() {
@@ -159,5 +157,43 @@ public class Analysis {
         .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
         .collect(Collectors.toList());
   }
+
+  // Readability Scores
+
+  @JsonProperty
+  public final Double getAutomatedReadabilityIndex() {
+    return scores.getAutomatedReadabilityIndex();
+  }
+
+  @JsonProperty
+  public final Double getColemanLiauIndex() {
+    return scores.getColemanLiauIndex();
+  }
+
+  @JsonProperty
+  public final Double getFleschKincaidGradeLevel() {
+    return scores.getFleschKincaidGradeLevel();
+  }
+
+  @JsonProperty
+  public final Double getFleschReadingEase() {
+    return scores.getFleschReadingEase();
+  }
+
+  @JsonProperty
+  public final Double getGunningFogIndex() {
+    return scores.getGunningFogIndex();
+  }
+
+  @JsonProperty
+  public final Double getLix() {
+    return scores.getLix();
+  }
+
+  @JsonProperty
+  public final Double getSmog() {
+    return scores.getSmog();
+  }
+
 
 }
