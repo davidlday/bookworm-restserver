@@ -1,0 +1,2 @@
+# bookworm-restserver
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c44155d47a4e4a5593ec9b5f993b9fe6)](https://www.codacy.com/app/davidlday/bookworm-restserver?utm_source=github.com&utm_medium=referral&utm_content=davidlday/bookworm-restserver&utm_campaign=badger)
