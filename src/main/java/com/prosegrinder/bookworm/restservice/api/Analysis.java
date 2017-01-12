@@ -1,14 +1,19 @@
 package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.prosegrinder.bookworm.restservice.api.WordFrequency;
 import com.prosegrinder.bookworm.util.Prose;
 import com.prosegrinder.bookworm.util.Word;
 import com.prosegrinder.bookworm.util.ReadabilityScores;
 import io.dropwizard.jackson.JsonSnakeCase;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @JsonSnakeCase
 public class Analysis {
@@ -36,13 +41,17 @@ public class Analysis {
   }
 
   @JsonProperty
-  public Map<Word, Integer> getWordFrequency() {
-    return prose.getWordFrequency();
+  public List<WordFrequency> getWordFrequency() {
+    return prose.getWordFrequency().entrySet().stream()
+        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .collect(Collectors.toList());
   }
 
   @JsonProperty
-  public Set<Word> getUniqueWords() {
-    return prose.getUniqueWords();
+  public Set<String> getUniqueWords() {
+    return prose.getUniqueWords().stream()
+        .map(word -> word.toString())
+        .collect(Collectors.toSet());
   }
 
   @JsonProperty
