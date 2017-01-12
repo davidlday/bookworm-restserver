@@ -30,38 +30,90 @@ public class Analysis {
     scores = new ReadabilityScores(prose);
   }
 
+
+
   @JsonProperty
-  public Integer getWordCount() {
-    return prose.getWordCount();
+  public Double getAvgSyllablesPerWord() {
+    return prose.getAverageSyllablesPerWord();
   }
 
   @JsonProperty
-  public Integer getSyllableCount() {
-    return prose.getSyllableCount();
+  public Double getAvgWordsPerSentence() {
+    return prose.getAverageWordsPerSentence();
   }
 
   @JsonProperty
-  public List<WordFrequency> getWordFrequency() {
-    return prose.getWordFrequency().entrySet().stream()
+  public Integer getBytes() {
+    return prose.getInitialText().getBytes().length;
+  }
+
+  @JsonProperty
+  public Integer getComplexWordCount() {
+    return prose.getComplexWordCount();
+  }
+
+  @JsonProperty
+  public Integer getDialogueSyllableCount() {
+    return prose.getDialogueSyllableCount();
+  }
+
+  @JsonProperty
+  public Double getDialogueSyllablePercentage() {
+    return (double) prose.getDialogueSyllableCount() / (double) prose.getSyllableCount() * 100;
+  }
+
+  @JsonProperty
+  public Integer getDialogueUniqueWordCount() {
+    return prose.getDialogueWordFrequency().keySet().size();
+  }
+
+  @JsonProperty
+  public Integer getDialogueWordCount() {
+    return prose.getDialogueWordCount();
+  }
+
+  @JsonProperty
+  public List<WordFrequency> getDialogueWordFrequency() {
+    return prose.getDialogueWordFrequency().entrySet().stream()
         .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
         .collect(Collectors.toList());
   }
 
   @JsonProperty
-  public Set<String> getUniqueWords() {
-    return prose.getUniqueWords().stream()
-        .map(word -> word.toString())
-        .collect(Collectors.toSet());
+  public Double getDialogueWordPercentage() {
+    return (double) prose.getDialogueWordCount() / (double) prose.getWordCount() * 100;
   }
 
   @JsonProperty
-  public Integer getUniqueWordCount() {
-    return prose.getUniqueWordCount();
+  public Integer getNarrativeSyllableCount() {
+    return prose.getNarrativeSyllableCount();
   }
 
   @JsonProperty
-  public Integer getSentenceCount() {
-    return prose.getSentenceCount();
+  public Double getNarrativeSyllablePercentage() {
+    return (double) prose.getNarrativeSyllableCount() / (double) prose.getSyllableCount() * 100;
+  }
+
+  @JsonProperty
+  public Integer getNarrativeUniqueWordCount() {
+    return prose.getNarrativeWordFrequency().keySet().size();
+  }
+
+  @JsonProperty
+  public Integer getNarrativeWordCount() {
+    return prose.getNarrativeWordCount();
+  }
+
+  @JsonProperty
+  public List<WordFrequency> getNarrativeWordFrequency() {
+    return prose.getNarrativeWordFrequency().entrySet().stream()
+        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .collect(Collectors.toList());
+  }
+
+  @JsonProperty
+  public Double getNarrativeWordPercentage() {
+    return (double) prose.getNarrativeWordCount() / (double) prose.getWordCount() * 100;
   }
 
   @JsonProperty
@@ -72,6 +124,40 @@ public class Analysis {
   @JsonProperty
   public String getPov() {
     return prose.getPov().toString();
+  }
+
+  @JsonProperty
+  public Integer getSentenceCount() {
+    return prose.getSentenceCount();
+  }
+
+  @JsonProperty
+  public Integer getSyllableCount() {
+    return prose.getSyllableCount();
+  }
+
+  @JsonProperty
+  public Integer getUniqueWordCount() {
+    return prose.getUniqueWordCount();
+  }
+
+  @JsonProperty
+  public Set<String> getUniqueWords() {
+    return prose.getUniqueWords().stream()
+        .map(word -> word.toString())
+        .collect(Collectors.toSet());
+  }
+
+  @JsonProperty
+  public Integer getWordCount() {
+    return prose.getWordCount();
+  }
+
+  @JsonProperty
+  public List<WordFrequency> getWordFrequency() {
+    return prose.getWordFrequency().entrySet().stream()
+        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .collect(Collectors.toList());
   }
 
 }
