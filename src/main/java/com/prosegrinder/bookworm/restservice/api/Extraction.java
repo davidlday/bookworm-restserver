@@ -17,7 +17,6 @@ import java.util.Map;
 @JsonSnakeCase
 public class Extraction {
 
-  private final InputStream is;
   private final String text;
   private final Map<String, String> md = new HashMap<String, String>();
   private final FormDataContentDisposition contentDisposition;
@@ -25,13 +24,12 @@ public class Extraction {
   public Extraction(final InputStream inputStream,
       final FormDataContentDisposition fileDetail)
       throws IOException, SAXException, TikaException  {
-    this.is = inputStream;
     this.contentDisposition = fileDetail;
 
     AutoDetectParser parser = new AutoDetectParser();
     BodyContentHandler handler = new BodyContentHandler();
     Metadata metadata = new Metadata();
-    parser.parse(is, handler, metadata);
+    parser.parse(inputStream, handler, metadata);
     this.text = handler.toString();
 
     String[] metadataNames = metadata.names();
