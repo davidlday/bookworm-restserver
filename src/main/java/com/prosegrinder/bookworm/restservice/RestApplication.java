@@ -1,8 +1,10 @@
 package com.prosegrinder.bookworm.restservice;
 
 import com.prosegrinder.bookworm.restservice.resources.AnalysisResource;
+import com.prosegrinder.bookworm.restservice.resources.ExtractionResource;
 import com.prosegrinder.bookworm.util.SyllableDictionary;
 import io.dropwizard.Application;
+import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -13,22 +15,24 @@ public class RestApplication extends Application<RestConfiguration> {
   }
 
   @Override
-  public String getName() {
+  public final String getName() {
     return "bookworm-restservice";
   }
 
   @Override
-  public void initialize(final Bootstrap<RestConfiguration> bootstrap) {
-    // TODO: application initialization
+  public final void initialize(final Bootstrap<RestConfiguration> bootstrap) {
     // Ensure the SyllableDictionary singleton is instantiated.
     SyllableDictionary.getInstance();
+    bootstrap.addBundle(new MultiPartBundle());
   }
 
   @Override
-  public void run(final RestConfiguration configuration,
+  public final void run(final RestConfiguration configuration,
                   final Environment environment) {
-    final AnalysisResource analysis = new AnalysisResource();
-    environment.jersey().register(analysis);
+    final AnalysisResource analysisResource = new AnalysisResource();
+    environment.jersey().register(analysisResource);
+    final ExtractionResource extractionResource = new ExtractionResource();
+    environment.jersey().register(extractionResource);
   }
 
 }

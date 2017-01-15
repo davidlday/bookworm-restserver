@@ -1,160 +1,157 @@
 package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-// import com.prosegrinder.bookworm.restservice.api.WordFrequency;
 import com.prosegrinder.bookworm.util.Prose;
-// import com.prosegrinder.bookworm.util.Word;
 import com.prosegrinder.bookworm.util.ReadabilityScores;
 import io.dropwizard.jackson.JsonSnakeCase;
-// import org.hibernate.validator.constraints.Length;
 
-// import java.util.ArrayList;
-// import java.util.Collections;
 import java.util.List;
-// import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @JsonSnakeCase
 public class Analysis {
 
-  private Prose prose;
-  private ReadabilityScores scores;
+  private final Prose prose;
+  private final ReadabilityScores scores;
 
-  public Analysis() {
-    // Jackson deserialization
-  }
-
-  public Analysis(String text) {
+  public Analysis(final String text) {
     prose = new Prose(text);
     scores = new ReadabilityScores(prose);
   }
 
   @JsonProperty
-  public Double getAvgSyllablesPerWord() {
+  public final Double getAvgSyllablesPerWord() {
     return prose.getAverageSyllablesPerWord();
   }
 
   @JsonProperty
-  public Double getAvgWordsPerSentence() {
+  public final Double getAvgWordsPerSentence() {
     return prose.getAverageWordsPerSentence();
   }
 
   @JsonProperty
-  public Integer getBytes() {
+  public final Integer getBytes() {
     return prose.getInitialText().getBytes().length;
   }
 
   @JsonProperty
-  public Integer getComplexWordCount() {
+  public final Integer getComplexWordCount() {
     return prose.getComplexWordCount();
   }
 
   @JsonProperty
-  public Integer getDialogueSyllableCount() {
+  public final Integer getDialogueSyllableCount() {
     return prose.getDialogueSyllableCount();
   }
 
   @JsonProperty
-  public Double getDialogueSyllablePercentage() {
-    return (double) prose.getDialogueSyllableCount() / (double) prose.getSyllableCount() * 100;
+  public final Double getDialogueSyllablePercentage() {
+    return (double) prose.getDialogueSyllableCount()
+        / (double) prose.getSyllableCount() * 100;
   }
 
   @JsonProperty
-  public Integer getDialogueUniqueWordCount() {
+  public final Integer getDialogueUniqueWordCount() {
     return prose.getDialogueWordFrequency().keySet().size();
   }
 
   @JsonProperty
-  public Integer getDialogueWordCount() {
+  public final Integer getDialogueWordCount() {
     return prose.getDialogueWordCount();
   }
 
   @JsonProperty
-  public List<WordFrequency> getDialogueWordFrequency() {
+  public final List<WordFrequency> getDialogueWordFrequency() {
     return prose.getDialogueWordFrequency().entrySet().stream()
-        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .map(entry ->
+            new WordFrequency(entry.getKey().toString(), entry.getValue()))
         .collect(Collectors.toList());
   }
 
   @JsonProperty
-  public Double getDialogueWordPercentage() {
-    return (double) prose.getDialogueWordCount() / (double) prose.getWordCount() * 100;
+  public final Double getDialogueWordPercentage() {
+    return (double) prose.getDialogueWordCount()
+        / (double) prose.getWordCount() * 100;
   }
 
   @JsonProperty
-  public Integer getNarrativeSyllableCount() {
+  public final Integer getNarrativeSyllableCount() {
     return prose.getNarrativeSyllableCount();
   }
 
   @JsonProperty
-  public Double getNarrativeSyllablePercentage() {
-    return (double) prose.getNarrativeSyllableCount() / (double) prose.getSyllableCount() * 100;
+  public final Double getNarrativeSyllablePercentage() {
+    return (double) prose.getNarrativeSyllableCount()
+        / (double) prose.getSyllableCount() * 100;
   }
 
   @JsonProperty
-  public Integer getNarrativeUniqueWordCount() {
+  public final Integer getNarrativeUniqueWordCount() {
     return prose.getNarrativeWordFrequency().keySet().size();
   }
 
   @JsonProperty
-  public Integer getNarrativeWordCount() {
+  public final Integer getNarrativeWordCount() {
     return prose.getNarrativeWordCount();
   }
 
   @JsonProperty
-  public List<WordFrequency> getNarrativeWordFrequency() {
+  public final List<WordFrequency> getNarrativeWordFrequency() {
     return prose.getNarrativeWordFrequency().entrySet().stream()
-        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .map(entry ->
+            new WordFrequency(entry.getKey().toString(), entry.getValue()))
         .collect(Collectors.toList());
   }
 
   @JsonProperty
-  public Double getNarrativeWordPercentage() {
-    return (double) prose.getNarrativeWordCount() / (double) prose.getWordCount() * 100;
+  public final Double getNarrativeWordPercentage() {
+    return (double) prose.getNarrativeWordCount()
+        / (double) prose.getWordCount() * 100;
   }
 
   @JsonProperty
-  public Integer getParagraphCount() {
+  public final Integer getParagraphCount() {
     return prose.getParagraphCount();
   }
 
   @JsonProperty
-  public String getPov() {
+  public final String getPov() {
     return prose.getPov().toString();
   }
 
   @JsonProperty
-  public Integer getSentenceCount() {
+  public final Integer getSentenceCount() {
     return prose.getSentenceCount();
   }
 
   @JsonProperty
-  public Integer getSyllableCount() {
+  public final Integer getSyllableCount() {
     return prose.getSyllableCount();
   }
 
   @JsonProperty
-  public Integer getUniqueWordCount() {
+  public final Integer getUniqueWordCount() {
     return prose.getUniqueWordCount();
   }
 
   @JsonProperty
-  public Set<String> getUniqueWords() {
+  public final Set<String> getUniqueWords() {
     return prose.getUniqueWords().stream()
         .map(word -> word.toString())
         .collect(Collectors.toSet());
   }
 
   @JsonProperty
-  public Integer getWordCount() {
+  public final Integer getWordCount() {
     return prose.getWordCount();
   }
 
   @JsonProperty
-  public List<WordFrequency> getWordFrequency() {
+  public final List<WordFrequency> getWordFrequency() {
     return prose.getWordFrequency().entrySet().stream()
-        .map(entry -> new WordFrequency(entry.getKey().toString(), entry.getValue()))
+        .map(entry ->
+            new WordFrequency(entry.getKey().toString(), entry.getValue()))
         .collect(Collectors.toList());
   }
 

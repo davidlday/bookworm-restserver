@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProsePayload {
-  private final String text;
+  private final String prose;
 
   @JsonCreator
-  public ProsePayload(@JsonProperty("prose") String text) {
-      this.text = text;
+  public ProsePayload(@JsonProperty("prose") final String text) {
+      this.prose = text;
   }
 
   @JsonProperty("prose")
-  public String getText() {
-      return text;
+  public final String getText() {
+      return prose;
   }
 }

@@ -8,19 +8,20 @@ public class WordFrequency {
   private final Integer count;
 
   @JsonCreator
-  public WordFrequency(@JsonProperty String word, @JsonProperty Integer count) {
-      this.word = word;
-      this.count = count;
+  public WordFrequency(@JsonProperty final String text,
+      @JsonProperty final Integer frequency) {
+    this.word = text;
+    this.count = frequency;
   }
 
   @JsonProperty
-  public String getWord() {
-      return word;
+  public final String getWord() {
+      return this.word;
   }
 
   @JsonProperty
-  public Integer getCount() {
-      return count;
+  public final Integer getCount() {
+      return this.count;
   }
 
 }

@@ -20,7 +20,7 @@ public class AnalysisResource {
 
   @POST
   @Timed
-  public Analysis getAnalysis(@NotNull ProsePayload prosePayload) {
+  public final Analysis getAnalysis(@NotNull final ProsePayload prosePayload) {
     return new Analysis(prosePayload.getText());
   }
 
