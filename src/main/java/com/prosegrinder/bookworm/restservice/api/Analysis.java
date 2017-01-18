@@ -76,6 +76,11 @@ public class Analysis {
   }
 
   @JsonProperty
+  public final Integer getLongWordCount() {
+    return prose.getLongWordCount();
+  }
+
+  @JsonProperty
   public final Integer getNarrativeSyllableCount() {
     return prose.getNarrativeSyllableCount();
   }
@@ -188,7 +193,12 @@ public class Analysis {
   }
 
   @JsonProperty
-  public final Double getSmog() {
+  public final Double getRix() {
+    return scores.getRix();
+  }
+
+  @JsonProperty
+  public final Double getSmogIndex() {
     return scores.getSmog();
   }
 
