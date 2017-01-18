@@ -2,6 +2,7 @@ package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.jackson.JsonSnakeCase;
 
 public class ProsePayload {
   private final String prose;

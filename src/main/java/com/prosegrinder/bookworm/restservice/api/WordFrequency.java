@@ -2,7 +2,9 @@ package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.jackson.JsonSnakeCase;
 
+@JsonSnakeCase
 public class WordFrequency {
   private final String word;
   private final Integer count;

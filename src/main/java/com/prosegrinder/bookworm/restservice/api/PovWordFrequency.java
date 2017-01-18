@@ -3,12 +3,19 @@ package com.prosegrinder.bookworm.restservice.api;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prosegrinder.bookworm.restservice.api.WordFrequency;
+import io.dropwizard.jackson.JsonSnakeCase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@JsonSnakeCase
 public class PovWordFrequency {
   private final Integer totalFrequency;
+//   private final Map<String, Integer> indicatorFrequency
+//       = new HashMap<String, Integer>();
+
   private final List<WordFrequency> indicatorFrequency
       = new ArrayList<WordFrequency>();
 

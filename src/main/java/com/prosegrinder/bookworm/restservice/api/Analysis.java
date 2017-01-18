@@ -16,8 +16,8 @@ public class Analysis {
   private final ReadabilityScores scores;
 
   public Analysis(final String text) {
-    prose = new Prose(text);
-    scores = new ReadabilityScores(prose);
+    this.prose = new Prose(text);
+    this.scores = new ReadabilityScores(this.prose);
   }
 
   @JsonProperty
@@ -161,7 +161,6 @@ public class Analysis {
   }
 
   // Readability Scores
-
   @JsonProperty
   public final Double getAutomatedReadabilityIndex() {
     return scores.getAutomatedReadabilityIndex();
@@ -202,5 +201,9 @@ public class Analysis {
     return scores.getSmog();
   }
 
+  @JsonProperty
+  public final PovIndicatorFrequency getPovIndicatorFrequency() {
+    return new PovIndicatorFrequency(this.prose);
+  }
 
 }
