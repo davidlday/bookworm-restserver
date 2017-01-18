@@ -2,31 +2,46 @@ package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.prosegrinder.bookworm.restservice.api.WordFrequency;
+import com.prosegrinder.bookworm.restservice.api.PovWordFrequency;
+import com.prosegrinder.bookworm.util.Word;
+import com.prosegrinder.bookworm.util.Prose;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PovIndicatorFrequency {
-  private final Integer totalFrequency;
-  private final List<WordFrequency> indicatorFrequency
-      = new ArrayList<WordFrequency>();
+
+  private final PovWordFrequency first;
+  private final PovWordFrequency second;
+  private final PovWordFrequency third;
+  private final Integer grandTotalFrequency;
 
   @JsonCreator
-  public PovIndicatorFrequency(@JsonProperty final Integer total,
-      @JsonProperty final List<WordFrequency> indicators) {
-    this.totalFrequency = total;
-    this.indicatorFrequency.addAll(indicators);
+  public PovIndicatorFrequency(@JsonProperty Prose prose) {
+    this.first = new PovWordFrequency();
+    this.second = new PovWordFrequency();
+    this.third = new PovWordFrequency();
+    this.grandTotalFrequency = 0;
   }
 
   @JsonProperty
-  public final Integer getTotalFrequency() {
-      return this.totalFrequency;
+  public final Integer getGrandTotalFrequency() {
+      return this.grandTotalFrequency;
   }
 
   @JsonProperty
-  public final List<WordFrequency> getIndicatorFrequency() {
-      return this.indicatorFrequency;
+  public final PovWordFrequency getFirst() {
+      return this.first;
+  }
+
+  @JsonProperty
+  public final PovWordFrequency getSecond() {
+      return this.second;
+  }
+
+  @JsonProperty
+  public final PovWordFrequency getThird() {
+      return this.third;
   }
 
 }
