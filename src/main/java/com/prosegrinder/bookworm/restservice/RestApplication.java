@@ -16,7 +16,7 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final String getName() {
-    return "bookworm-restservice";
+    return "bookworm-restserver";
   }
 
   @Override
