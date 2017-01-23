@@ -85,11 +85,11 @@ public class Analysis {
     return prose.getNarrativeSyllableCount();
   }
 
-  @JsonProperty
-  public final Double getNarrativeSyllablePercentage() {
-    return (double) prose.getNarrativeSyllableCount()
-        / (double) prose.getSyllableCount() * 100;
-  }
+//   @JsonProperty
+//   public final Double getNarrativeSyllablePercentage() {
+//     return (double) prose.getNarrativeSyllableCount()
+//         / (double) prose.getSyllableCount() * 100;
+//   }
 
   @JsonProperty
   public final Integer getNarrativeUniqueWordCount() {
@@ -109,11 +109,11 @@ public class Analysis {
         .collect(Collectors.toList());
   }
 
-  @JsonProperty
-  public final Double getNarrativeWordPercentage() {
-    return (double) prose.getNarrativeWordCount()
-        / (double) prose.getWordCount() * 100;
-  }
+//   @JsonProperty
+//   public final Double getNarrativeWordPercentage() {
+//     return (double) prose.getNarrativeWordCount()
+//         / (double) prose.getWordCount() * 100;
+//   }
 
   @JsonProperty
   public final Integer getParagraphCount() {
