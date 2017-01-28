@@ -6,9 +6,7 @@ import com.prosegrinder.bookworm.restservice.api.WordFrequency;
 import io.dropwizard.jackson.JsonSnakeCase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @JsonSnakeCase
 public class PovWordFrequency {
