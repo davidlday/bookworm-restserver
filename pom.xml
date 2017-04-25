@@ -113,6 +113,9 @@
                             <mainClass>${mainClass}</mainClass>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
+						<manifestEntries>
+							<Build-Date>${maven.build.timestamp}</Build-Date>
+						</manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
@@ -148,21 +151,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-			    	<archive>
-				    	<manifest>
-				      		<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-				    	</manifest>
-						<manifestEntries>
-							<Build-Date>${maven.build.timestamp}</Build-Date>
-						</manifestEntries>
-					</archive>
-				</configuration>
-		    </plugin>
         </plugins>
     </build>
 
