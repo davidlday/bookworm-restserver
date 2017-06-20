@@ -28,5 +28,5 @@ ______            _     _____
 Health Check
 ---
 
-No health checks exist at this timed
+No health checks exist at this time. Health checks will be added before 1.0 release.
 
