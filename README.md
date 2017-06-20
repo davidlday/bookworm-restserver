@@ -10,7 +10,7 @@ How to start the bookworm-restservice application
 
 You should see logs on stdout, along with the following banner:
 
-
+```
 ______                _
 | ___ \              | |
 | |_/ /  ___    ___  | | ____      __ ___   _ __  _ __ ___
@@ -23,6 +23,7 @@ ______            _     _____
 |    / / _ \/ __|| __|  `--. \ / _ \| '__|\ \ / // _ \| '__|
 | |\ \|  __/\__ \| |_  /\__/ /|  __/| |    \ V /|  __/| |
 \_| \_|\___||___/ \__| \____/  \___||_|     \_/  \___||_|
+```
 
 Health Check
 ---
