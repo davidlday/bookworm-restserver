@@ -170,4 +170,8 @@
             </plugin>
         </plugins>
     </reporting>
+    <scm>
+    	<url>https://github.com/davidlday/bookworm-restserver</url>
+    </scm>
+    <description>A REST Service wrapper for the bookworm library.</description>
 </project>
