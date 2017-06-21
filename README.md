@@ -15,7 +15,7 @@ How to start the bookworm-restservice application
 ---
 
 1. Run `mvn clean compile package` to build the server. This will *not* install to your local Maven repo.
-1. Start application with `java -jar target/bookworm-restserver-0.5.jar server <config.yml>`
+1. Start application with `java -jar target/bookworm-restserver-0.5.1-SNAPSHOT.jar server <config.yml>`
   1. Settings can be specified in the optional `config.yml` file. See the [Dropwizard.io Docs](http://www.dropwizard.io/1.1.0/docs/manual/configuration.html) for details.
 1. To check that your application is running enter url `http://localhost:8080`
 
