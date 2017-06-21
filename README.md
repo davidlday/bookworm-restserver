@@ -3,7 +3,7 @@
 Memory Usage
 ---
 
-The underlying bookworm library (0.5) is horribly inefficient in memory management. The next release will include caching to try and gain efficiencies. For now, understand that if run as is, and used heavily as I do in my prosebot experimentation, this service will easily consume 700+ MB of memory.
+The underlying bookworm library (0.5) is horribly inefficient in memory management. The next release will include caching to try and gain efficiencies. For now, understand that if run as is, and used heavily as I do in my [prosebot](https://github.com/davidlday/prosebot) experimentation, this service will easily consume 700+ MB of memory.
 
 Prerequisites
 ---
