@@ -1,0 +1,6 @@
+# Hide everything in this directory
+*
+# Exception this file
+!.gitignore
+# And the sample config file.
+!sample.yml
