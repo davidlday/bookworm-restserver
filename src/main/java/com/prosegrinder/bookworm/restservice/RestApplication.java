@@ -2,7 +2,7 @@ package com.prosegrinder.bookworm.restservice;
 
 import com.prosegrinder.bookworm.restservice.resources.AnalysisResource;
 import com.prosegrinder.bookworm.restservice.resources.ExtractionResource;
-import com.prosegrinder.bookworm.util.SyllableDictionary;
+//import com.prosegrinder.bookworm.util.SyllableDictionary;
 import io.dropwizard.Application;
 import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -22,7 +22,7 @@ public class RestApplication extends Application<RestConfiguration> {
   @Override
   public final void initialize(final Bootstrap<RestConfiguration> bootstrap) {
     // Ensure the SyllableDictionary singleton is instantiated.
-    SyllableDictionary.getInstance();
+//    SyllableDictionary.getInstance();
     bootstrap.addBundle(new MultiPartBundle());
   }
 
