@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.prosegrinder</groupId>
             <artifactId>bookworm</artifactId>
-            <version>0.6-SNAPSHOT</version>
+            <version>0.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
