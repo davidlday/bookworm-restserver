@@ -2,6 +2,8 @@ package com.prosegrinder.bookworm.restservice;
 
 import com.prosegrinder.bookworm.restservice.resources.AnalysisResource;
 import com.prosegrinder.bookworm.restservice.resources.ExtractionResource;
+import com.prosegrinder.bookworm.util.CMUDict;
+
 //import com.prosegrinder.bookworm.util.SyllableDictionary;
 import io.dropwizard.Application;
 import io.dropwizard.forms.MultiPartBundle;
@@ -21,8 +23,8 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final void initialize(final Bootstrap<RestConfiguration> bootstrap) {
-    // Ensure the SyllableDictionary singleton is instantiated.
-//    SyllableDictionary.getInstance();
+    // Pay the expense of loading CMUDict on startup
+    CMUDict.getInstance();
     bootstrap.addBundle(new MultiPartBundle());
   }
 
