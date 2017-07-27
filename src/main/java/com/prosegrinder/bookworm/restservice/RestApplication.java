@@ -2,7 +2,6 @@ package com.prosegrinder.bookworm.restservice;
 
 import com.prosegrinder.bookworm.restservice.resources.AnalysisResource;
 import com.prosegrinder.bookworm.restservice.resources.ExtractionResource;
-import com.prosegrinder.bookworm.util.CMUDict;
 
 //import com.prosegrinder.bookworm.util.SyllableDictionary;
 import io.dropwizard.Application;
@@ -23,8 +22,6 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final void initialize(final Bootstrap<RestConfiguration> bootstrap) {
-    // Pay the expense of loading CMUDict on startup
-    CMUDict.getInstance();
     bootstrap.addBundle(new MultiPartBundle());
   }
 
