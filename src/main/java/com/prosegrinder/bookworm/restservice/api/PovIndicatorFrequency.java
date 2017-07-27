@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prosegrinder.bookworm.restservice.api.PovWordFrequency;
 import com.prosegrinder.bookworm.util.Word;
-import com.prosegrinder.bookworm.util.Dictionary;
+import com.prosegrinder.bookworm.util.Dictionary2;
 import com.prosegrinder.bookworm.util.Prose;
 import io.dropwizard.jackson.JsonSnakeCase;
 
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,7 @@ public class PovIndicatorFrequency {
   private final Integer grandTotalFrequency;
 
   @JsonCreator
-  public PovIndicatorFrequency(@JsonProperty Prose prose) {
-    Dictionary dictionary = Dictionary.getInstance();
-    
+  public PovIndicatorFrequency(@JsonProperty Prose prose, Dictionary2 dictionary) {
     List<WordFrequency> firstList = new ArrayList<WordFrequency>();
     List<WordFrequency> secondList = new ArrayList<WordFrequency>();
     List<WordFrequency> thirdList = new ArrayList<WordFrequency>();
@@ -57,6 +56,12 @@ public class PovIndicatorFrequency {
 
     this.grandTotalFrequency = firstTotal + secondTotal + thirdTotal;
   }
+
+//  @Deprecated
+//  @JsonCreator
+//  public PovIndicatorFrequency(@JsonProperty Prose prose) throws IOException {
+//    this(prose, Dictionary2.getDefaultDictionary());
+//  }
 
   @JsonProperty
   public final Integer getGrandTotalFrequency() {
