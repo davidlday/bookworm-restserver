@@ -22,8 +22,7 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final void initialize(final Bootstrap<RestConfiguration> bootstrap) {
-    bootstrap.addBundle(new TypesafeConfigurationBundle());
-//    bootstrap.addBundle(new TypesafeConfigurationBundle("com.prosegrinder.bookworm.restservice"));
+    bootstrap.addBundle(new TypesafeConfigurationBundle("com.prosegrinder.bookworm.restservice"));
     bootstrap.addBundle(new MultiPartBundle());
   }
 
