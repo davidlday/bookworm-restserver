@@ -23,12 +23,6 @@ public class Extraction {
   private final Map<String, String> md = new HashMap<String, String>();
   private final FormDataContentDisposition contentDisposition;
 
-  @Deprecated
-  public Extraction(final InputStream inputStream, final FormDataContentDisposition fileDetail)
-      throws IOException, SAXException, TikaException {
-    this(inputStream, fileDetail, 1000000);
-  }
-
   public Extraction(final InputStream inputStream, final FormDataContentDisposition fileDetail,
       final Integer writeLimit) throws IOException, SAXException, TikaException {
     this.contentDisposition = fileDetail;
