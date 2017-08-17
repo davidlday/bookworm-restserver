@@ -1,7 +1,9 @@
 package com.prosegrinder.bookworm.restservice;
 
+import com.prosegrinder.bookworm.restservice.health.DictionaryHealthCheck;
 import com.prosegrinder.bookworm.restservice.resources.AnalysisResource;
 import com.prosegrinder.bookworm.restservice.resources.ExtractionResource;
+import com.prosegrinder.bookworm.util.Dictionary2;
 
 import ca.mestevens.java.configuration.bundle.TypesafeConfigurationBundle;
 import io.dropwizard.Application;
@@ -28,11 +30,16 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final void run(final RestConfiguration configuration, final Environment environment) {
+    
     final AnalysisResource analysisResource = new AnalysisResource();
     environment.jersey().register(analysisResource);
+
     final int characterLimit = configuration.getExtractionCharacterLimit();
     final ExtractionResource extractionResource = new ExtractionResource(characterLimit);
     environment.jersey().register(extractionResource);
+    
+    final Dictionary2 dictionary = Dictionary2.getDefaultDictionary();
+    environment.healthChecks().register("dictionary", new DictionaryHealthCheck(dictionary));
   }
 
 }
