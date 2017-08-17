@@ -30,8 +30,7 @@ public class RestApplication extends Application<RestConfiguration> {
   public final void run(final RestConfiguration configuration, final Environment environment) {
     final AnalysisResource analysisResource = new AnalysisResource();
     environment.jersey().register(analysisResource);
-    int characterLimit = configuration.getConfig()
-        .getConfig("com.prosegrinder.bookworm.restservice.extraction").getInt("characterLimit");
+    final int characterLimit = configuration.getExtractionCharacterLimit();
     final ExtractionResource extractionResource = new ExtractionResource(characterLimit);
     environment.jersey().register(extractionResource);
   }

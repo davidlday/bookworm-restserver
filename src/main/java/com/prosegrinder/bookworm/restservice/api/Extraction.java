@@ -24,11 +24,11 @@ public class Extraction {
   private final FormDataContentDisposition contentDisposition;
 
   public Extraction(final InputStream inputStream, final FormDataContentDisposition fileDetail,
-      final Integer writeLimit) throws IOException, SAXException, TikaException {
+      final Integer characterLimit) throws IOException, SAXException, TikaException {
     this.contentDisposition = fileDetail;
 
     AutoDetectParser parser = new AutoDetectParser();
-    BodyContentHandler handler = new BodyContentHandler(writeLimit);
+    BodyContentHandler handler = new BodyContentHandler(characterLimit);
     Metadata metadata = new Metadata();
     parser.parse(inputStream, handler, metadata);
     this.text = handler.toString();
@@ -44,15 +44,15 @@ public class Extraction {
     return this.text;
   }
 
-  // @JsonProperty
-  // public final Map<String, String> getMetadata() {
-  // return this.md;
-  // }
+//  @JsonProperty
+//  public final Map<String, String> getMetadata() {
+//    return this.md;
+//  }
 
-  // @JsonProperty
-  // public final FormDataContentDisposition getContentDisposition() {
-  // return this.contentDisposition;
-  // }
+//  @JsonProperty
+//  public final FormDataContentDisposition getContentDisposition() {
+//    return this.contentDisposition;
+//  }
 
   @JsonProperty
   public final String getFileName() {
