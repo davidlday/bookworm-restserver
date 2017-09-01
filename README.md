@@ -2,7 +2,7 @@
 
 # bookworm-restservice
 
-A REST API wrapper for the [Bookworm]() library, which also includes an API for extracting text from various document formats using Apache Tekka.
+A REST API wrapper for the [Bookworm]() library, including an API for extracting text from various document formats using Apache Tekka.
 
 ## Download
 
