@@ -8,9 +8,6 @@ A REST API wrapper for the [Bookworm]() library, which also includes an API for 
 
 Binary downloads available at: https://github.com/davidlday/bookworm-restserver/releases/latest
 
-Documentation
----
-
 ## Documentation
 
 WIKI: https://github.com/davidlday/bookworm-restserver/wiki
