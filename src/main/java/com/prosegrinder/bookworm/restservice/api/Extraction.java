@@ -1,7 +1,9 @@
 package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.dropwizard.jackson.JsonSnakeCase;
+
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -21,13 +23,12 @@ public class Extraction {
   private final Map<String, String> md = new HashMap<String, String>();
   private final FormDataContentDisposition contentDisposition;
 
-  public Extraction(final InputStream inputStream,
-      final FormDataContentDisposition fileDetail)
-      throws IOException, SAXException, TikaException  {
+  public Extraction(final InputStream inputStream, final FormDataContentDisposition fileDetail,
+      final Integer characterLimit) throws IOException, SAXException, TikaException {
     this.contentDisposition = fileDetail;
 
     AutoDetectParser parser = new AutoDetectParser();
-    BodyContentHandler handler = new BodyContentHandler();
+    BodyContentHandler handler = new BodyContentHandler(characterLimit);
     Metadata metadata = new Metadata();
     parser.parse(inputStream, handler, metadata);
     this.text = handler.toString();
@@ -43,15 +44,15 @@ public class Extraction {
     return this.text;
   }
 
-//   @JsonProperty
-//   public final Map<String, String> getMetadata() {
-//     return this.md;
-//   }
+//  @JsonProperty
+//  public final Map<String, String> getMetadata() {
+//    return this.md;
+//  }
 
-//   @JsonProperty
-//   public final FormDataContentDisposition getContentDisposition() {
-//     return this.contentDisposition;
-//   }
+//  @JsonProperty
+//  public final FormDataContentDisposition getContentDisposition() {
+//    return this.contentDisposition;
+//  }
 
   @JsonProperty
   public final String getFileName() {

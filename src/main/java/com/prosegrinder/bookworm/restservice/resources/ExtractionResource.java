@@ -20,19 +20,22 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 @Produces(MediaType.APPLICATION_JSON)
 public class ExtractionResource {
+  
+  private int characterLimit;
 
   @POST
   @Timed
   public final Extraction getExtraction(
       @NotNull @FormDataParam("file") final InputStream uploadedInputStream,
-      @NotNull @FormDataParam("file")
-          final FormDataContentDisposition fileDetail)
-      throws IOException, SAXException, TikaException  {
-    return new Extraction(uploadedInputStream, fileDetail);
+      @NotNull @FormDataParam("file") final FormDataContentDisposition fileDetail)
+      throws IOException, SAXException, TikaException {
+    return new Extraction(uploadedInputStream, fileDetail, this.characterLimit);
+  }
+
+  public ExtractionResource(int characterLimit) {
+    this.characterLimit = characterLimit;
   }
 
 }
-
-
 
 

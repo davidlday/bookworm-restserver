@@ -1,25 +1,47 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c44155d47a4e4a5593ec9b5f993b9fe6)](https://www.codacy.com/app/davidlday/bookworm-restserver?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=davidlday/bookworm-restserver&amp;utm_campaign=Badge_Grade)
+
 # bookworm-restservice
 
-Memory Usage
----
+A REST API wrapper for the [Bookworm]() library, including an API for extracting text from various document formats using [Apache Tika](https://tika.apache.org/).
 
-The underlying bookworm library (0.5) is horribly inefficient in memory management. The next release will include caching to try and gain efficiencies. For now, understand that if run as is, and used heavily as I do in my [prosebot](https://github.com/davidlday/prosebot) experimentation, this service will easily consume 700+ MB of memory.
+## Download
 
-Prerequisites
----
+Binary downloads available at: https://github.com/davidlday/bookworm-restserver/releases/latest
+
+## Documentation
+
+WIKI: https://github.com/davidlday/bookworm-restserver/wiki
+
+Issue tracker: https://github.com/davidlday/bookworm-restserver/issues
+
+## Building
+
+#### Prerequisites:
 
 1. Java 1.8+
-1. [Bookworm v0.5](https://github.com/davidlday/bookworm/releases/tag/v0.5). Maven will take care of the rest.
+1. Maven 3.0+ (I'm using 3.5)
+1. [Bookworm](https://github.com/davidlday/bookworm) - you'll need to download, build, and install the latest SNAPSHOT (for develop branch) or RELEASE (for master branch) until I make time to add it to Maven Central.
+1. Maven will take care of the rest.
+
+#### Build
+```sh
+git clone https://github.com/davidlday/bookworm-restserver.git bookworm-restserver
+cd bookworm-restserver
+mvn clean compile package
+```
+
+This will build a fat jar in the target directory.
 
 How to start the bookworm-restservice application
 ---
 
-1. Run `mvn clean compile package` to build the server. This will *not* install to your local Maven repo.
-1. Start application with `java -jar target/bookworm-restserver-0.5.jar server <config.yml>`
-  1. Settings can be specified in the optional `config.yml` file. See the [Dropwizard.io Docs](http://www.dropwizard.io/1.1.0/docs/manual/configuration.html) for details.
+1. Note that as of 0.5.1, this project uses Typesafe Dropwizard configuration to support configuring the underlying [Bookworm](https://github.com/davidlday/bookworm) library in the same place.
+1. Start application with `java -jar target/bookworm-restserver-0.5.1-SNAPSHOT.jar server <config.conf>`
+  1. Settings can be specified in the optional `conf/sample.conf` file.
+  1. See [TypeSafe Dropwizard Docs](https://github.com/mestevens/typesafe-dropwizard-configuration) for details.
 1. To check that your application is running enter url `http://localhost:8080`
 
-You should see logs on stdout, along with the following banner:
+If you're in log level INFO, you should see logs on stdout, along with the following banner:
 
 ```
 ______                _
@@ -39,5 +61,5 @@ ______            _     _____
 Health Check
 ---
 
-No health checks exist at this time. Health checks will be added before 1.0 release.
+One health check exists, which simply ensures the underlying dictionary object is functioning correctly.
 

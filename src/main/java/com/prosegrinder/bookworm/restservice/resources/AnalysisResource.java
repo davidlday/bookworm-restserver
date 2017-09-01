@@ -2,6 +2,8 @@ package com.prosegrinder.bookworm.restservice.resources;
 
 import com.prosegrinder.bookworm.restservice.api.Analysis;
 import com.prosegrinder.bookworm.restservice.api.ProsePayload;
+import com.prosegrinder.bookworm.util.Dictionary2;
+
 import com.codahale.metrics.annotation.Timed;
 
 // import java.util.Optional;
@@ -21,7 +23,7 @@ public class AnalysisResource {
   @POST
   @Timed
   public final Analysis getAnalysis(@NotNull final ProsePayload prosePayload) {
-    return new Analysis(prosePayload.getText());
+    return new Analysis(prosePayload.getText(), Dictionary2.getDefaultDictionary());
   }
 
 }

@@ -1,10 +1,12 @@
 package com.prosegrinder.bookworm.restservice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.prosegrinder.bookworm.util.Dictionary2;
 import com.prosegrinder.bookworm.util.Prose;
 import com.prosegrinder.bookworm.util.ReadabilityScores;
 import io.dropwizard.jackson.JsonSnakeCase;
 
+//import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,12 +16,19 @@ public class Analysis {
 
   private final Prose prose;
   private final ReadabilityScores scores;
+  private final Dictionary2 dictionary;
 
-  public Analysis(final String text) {
-    this.prose = new Prose(text);
+//  @Deprecated
+//  public Analysis(final String text) throws IOException {
+//    this(text, Dictionary2.getDefaultDictionary());
+//  }
+
+  public Analysis(final String text, final Dictionary2 dictionary) {
+    this.dictionary = dictionary;
+    this.prose = new Prose(text, dictionary);
     this.scores = new ReadabilityScores(this.prose);
   }
-
+  
   @JsonProperty
   public final Double getAvgSyllablesPerWord() {
     return prose.getAverageSyllablesPerWord();
@@ -203,7 +212,7 @@ public class Analysis {
 
   @JsonProperty
   public final PovIndicatorFrequency getPovIndicatorFrequency() {
-    return new PovIndicatorFrequency(this.prose);
+    return new PovIndicatorFrequency(this.prose, this.dictionary);
   }
 
 }

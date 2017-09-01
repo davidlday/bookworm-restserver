@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prosegrinder.bookworm.restservice.api.PovWordFrequency;
 import com.prosegrinder.bookworm.util.Word;
+import com.prosegrinder.bookworm.util.Dictionary2;
 import com.prosegrinder.bookworm.util.Prose;
 import io.dropwizard.jackson.JsonSnakeCase;
 
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class PovIndicatorFrequency {
   private final Integer grandTotalFrequency;
 
   @JsonCreator
-  public PovIndicatorFrequency(@JsonProperty Prose prose) {
+  public PovIndicatorFrequency(@JsonProperty Prose prose, Dictionary2 dictionary) {
     List<WordFrequency> firstList = new ArrayList<WordFrequency>();
     List<WordFrequency> secondList = new ArrayList<WordFrequency>();
     List<WordFrequency> thirdList = new ArrayList<WordFrequency>();
@@ -29,7 +31,7 @@ public class PovIndicatorFrequency {
     Integer thirdTotal = 0;
 
     for (String word: Word.POV_FIRST) {
-      Integer freq = prose.getWordFrequency(new Word(word));
+      Integer freq = prose.getWordFrequency(dictionary.getWord(word));
       firstTotal += freq;
       WordFrequency wf = new WordFrequency(word, freq);
       firstList.add(wf);
@@ -37,7 +39,7 @@ public class PovIndicatorFrequency {
     this.first = new PovWordFrequency(firstTotal, firstList);
 
     for (String word: Word.POV_SECOND) {
-      Integer freq = prose.getWordFrequency(new Word(word));
+      Integer freq = prose.getWordFrequency(dictionary.getWord(word));
       secondTotal += freq;
       WordFrequency wf = new WordFrequency(word, freq);
       secondList.add(wf);
@@ -45,7 +47,7 @@ public class PovIndicatorFrequency {
     this.second = new PovWordFrequency(secondTotal, secondList);
 
     for (String word: Word.POV_THIRD) {
-      Integer freq = prose.getWordFrequency(new Word(word));
+      Integer freq = prose.getWordFrequency(dictionary.getWord(word));
       thirdTotal += freq;
       WordFrequency wf = new WordFrequency(word, freq);
       thirdList.add(wf);
@@ -54,6 +56,12 @@ public class PovIndicatorFrequency {
 
     this.grandTotalFrequency = firstTotal + secondTotal + thirdTotal;
   }
+
+//  @Deprecated
+//  @JsonCreator
+//  public PovIndicatorFrequency(@JsonProperty Prose prose) throws IOException {
+//    this(prose, Dictionary2.getDefaultDictionary());
+//  }
 
   @JsonProperty
   public final Integer getGrandTotalFrequency() {

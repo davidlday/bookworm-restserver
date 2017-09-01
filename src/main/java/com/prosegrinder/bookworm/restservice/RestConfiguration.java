@@ -1,9 +1,13 @@
 package com.prosegrinder.bookworm.restservice;
 
-import io.dropwizard.Configuration;
-// import org.hibernate.validator.constraints.*;
-// import javax.validation.constraints.*;
+import ca.mestevens.java.configuration.TypesafeConfiguration;
+// import io.dropwizard.Configuration;
 
-public class RestConfiguration extends Configuration {
-    // TODO: implement service configuration
+public class RestConfiguration extends TypesafeConfiguration {
+
+  public int getExtractionCharacterLimit() {
+    return this.getConfig().getConfig("com.prosegrinder.bookworm.restservice.extraction")
+        .getInt("characterLimit");
+  }
+  
 }
