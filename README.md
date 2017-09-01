@@ -22,7 +22,7 @@ Issue tracker: https://github.com/davidlday/bookworm-restserver/issues
 #### Prerequisites:
 
 1. Java 1.8+
-1. [Bookworm](https://github.com/davidlday/bookworm) - you'll need to download, build, and install the latest SNAPSHOT (for develop branch) or RELEASE (for master branch)
+1. [Bookworm](https://github.com/davidlday/bookworm) - you'll need to download, build, and install the latest SNAPSHOT (for develop branch) or RELEASE (for master branch) until I make time to add it to Maven Central.
 1. Maven will take care of the rest
 
 #### Build
