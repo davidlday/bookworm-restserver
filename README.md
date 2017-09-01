@@ -19,8 +19,9 @@ Issue tracker: https://github.com/davidlday/bookworm-restserver/issues
 #### Prerequisites:
 
 1. Java 1.8+
+1. Maven 3.0+ (I'm using 3.5)
 1. [Bookworm](https://github.com/davidlday/bookworm) - you'll need to download, build, and install the latest SNAPSHOT (for develop branch) or RELEASE (for master branch) until I make time to add it to Maven Central.
-1. Maven will take care of the rest
+1. Maven will take care of the rest.
 
 #### Build
 ```sh
@@ -34,7 +35,7 @@ This will build a fat jar in the target directory.
 How to start the bookworm-restservice application
 ---
 
-1. Not that as of 0.5.1, this service Typesafe Dropwizard configuration to support configuring the underlying [Bookworm](https://github.com/davidlday/bookworm) library in the same place.
+1. Note that as of 0.5.1, this project uses Typesafe Dropwizard configuration to support configuring the underlying [Bookworm](https://github.com/davidlday/bookworm) library in the same place.
 1. Start application with `java -jar target/bookworm-restserver-0.5.1-SNAPSHOT.jar server <config.conf>`
   1. Settings can be specified in the optional `conf/sample.conf` file.
   1. See [TypeSafe Dropwizard Docs](https://github.com/mestevens/typesafe-dropwizard-configuration) for details.
