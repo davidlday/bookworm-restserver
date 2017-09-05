@@ -31,15 +31,15 @@ public class RestApplication extends Application<RestConfiguration> {
   @Override
   public final void run(final RestConfiguration configuration, final Environment environment) {
     
-    final AnalysisResource analysisResource = new AnalysisResource();
+    final Dictionary2 dictionary = configuration.getDictionary();
+    final AnalysisResource analysisResource = new AnalysisResource(dictionary);
     environment.jersey().register(analysisResource);
+    environment.healthChecks().register("dictionary", new DictionaryHealthCheck(dictionary));
 
     final int characterLimit = configuration.getExtractionCharacterLimit();
     final ExtractionResource extractionResource = new ExtractionResource(characterLimit);
     environment.jersey().register(extractionResource);
     
-    final Dictionary2 dictionary = Dictionary2.getDefaultDictionary();
-    environment.healthChecks().register("dictionary", new DictionaryHealthCheck(dictionary));
   }
 
 }
