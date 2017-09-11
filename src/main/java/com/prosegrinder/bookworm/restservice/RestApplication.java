@@ -30,7 +30,7 @@ public class RestApplication extends Application<RestConfiguration> {
 
   @Override
   public final void run(final RestConfiguration configuration, final Environment environment) {
-    
+
     final Dictionary2 dictionary = configuration.getDictionary();
     final AnalysisResource analysisResource = new AnalysisResource(dictionary);
     environment.jersey().register(analysisResource);
