@@ -36,8 +36,9 @@ How to start the bookworm-restservice application
 ---
 
 1. Note that as of 0.5.1, this project uses Typesafe Dropwizard configuration to support configuring the underlying [Bookworm](https://github.com/davidlday/bookworm) library in the same place.
-1. Start application with `java -jar target/bookworm-restserver-0.5.1-SNAPSHOT.jar server <config.conf>`
-  1. Settings can be specified in the optional `conf/sample.conf` file.
+1. Start application with `java [-Dconfig.file=<config.conf>] -jar target/bookworm-restserver-0.5.1-SNAPSHOT.jar server`
+  1. Settings can be specified as in the optional `conf/sample.conf` file.
+  1. Dropwizard originally accepted a config file as an additional argument at the end after `server`. However, this caused problems in my testing. The `reference.conf` file from the underlying Bookworm library was no longer getting picked up. Instead, specify using Typesafe config's method of `-Dconfig.file=<config.conf>`.
   1. See [TypeSafe Dropwizard Docs](https://github.com/mestevens/typesafe-dropwizard-configuration) for details.
 1. To check that your application is running enter url `http://localhost:8080`
 
