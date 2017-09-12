@@ -20,10 +20,15 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class AnalysisResource {
 
+  private Dictionary2 dictionary;
+  
   @POST
   @Timed
   public final Analysis getAnalysis(@NotNull final ProsePayload prosePayload) {
-    return new Analysis(prosePayload.getText(), Dictionary2.getDefaultDictionary());
+    return new Analysis(prosePayload.getText(), this.dictionary);
   }
 
+  public AnalysisResource(Dictionary2 dictionary) {
+    this.dictionary = dictionary;
+  }
 }
