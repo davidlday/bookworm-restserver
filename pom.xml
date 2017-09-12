@@ -6,7 +6,7 @@
 
 	<groupId>com.prosegrinder</groupId>
 	<artifactId>bookworm-restserver</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.7.0</version>
 	<packaging>jar</packaging>
 
 	<name>bookworm-restserver</name>
